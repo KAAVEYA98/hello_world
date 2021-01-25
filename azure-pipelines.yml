@@ -1,15 +1,13 @@
 jobs:
-- job: Linux
-  pool:
-    vmImage: 'ubuntu-latest'
-  steps:
-  - script: echo hello from Linux
-- job: macOS
-  pool:
-    vmImage: 'macOS-latest'
-  steps:
-  - script: echo hello from macOS
+-
 - job: Windows
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+- task: NodeTool@0
+  inputs:
+    versionSpec: '6.x'
+    checkLatest: true
   pool:
     vmImage: 'windows-latest'
   steps:
